@@ -31,7 +31,6 @@ async function fetchData() {
   const data = await response.json();
   
   return data.data.contractors.data.map((value:any) => {
-    console.log(111, value)
     return value.attributes
   });
 }

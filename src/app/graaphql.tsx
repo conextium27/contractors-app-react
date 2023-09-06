@@ -1,37 +1,28 @@
-const API_URL = 'http://127.0.0.1:1337/graphql';
+import { gql } from "@apollo/client";
+import client from "../../apollo-client";
 
-const CONTRACTORS_QUERY = `
-query{
-    contractors{
-      data{
-        attributes{
-          fullname,
-          specialities,
-          dayrate,
-          availability
+export async function GetDataContractors() {
+
+    const { data: { contractors } }: any = await client.query({
+        query: gql`
+      {
+        contractors {
+            data {
+                attributes {
+                    name
+                    specialities
+                    day_rate
+                    availability
+                }
+            }
         }
       }
-    }
-  }
-  `;
+          `,
+    });
+    return contractors.data.map((value: any) => {
 
-async function fetchData() {
-  const response = await fetch(API_URL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ query:CONTRACTORS_QUERY }),
-  });
+        const res = { ...value.attributes };
 
-  if (!response.ok) {
-    throw new Error('Error al realizar la consulta GraphQL');
-  }
-  
-  const data = await response.json();
-  return data.data.contractors.data.map((value:any) => {
-    
-    return value.attributes
-  });
+        return res;
+    });
 }
-export default fetchData;
