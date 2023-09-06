@@ -1,0 +1,31 @@
+.unique{
+  justify-content: center;
+}
+.circle{
+    border-radius: 8px;
+    padding: 3px;
+    color: white;
+}
+.color-div {
+    color: black;
+    background: #ffffff;
+  }
+  .selectedRow {
+    color: white;
+    background: #377FE9;
+  }
+  .selectedRowText{
+    color: white;
+  }
+  .hover:hover{
+    background: #FAFAFA;
+
+  }
+.tags{
+  border-radius: 6px;
+    background: #F3F3F3;
+}
+.selectedRowTag{
+  color: white;
+  background: rgb(96, 151, 233);
+}
