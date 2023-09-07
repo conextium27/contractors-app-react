@@ -1,5 +1,5 @@
 import RowList from "../rowList/Rowlist";
-import { GetDataContractors } from "../../app/graaphql";
+import { GetDataContractors } from "../../../graaphql";
 
 export default async function GridContractos() {
     const dataResult = await GetDataContractors();
